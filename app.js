@@ -23,15 +23,22 @@ let history = [];
 // =========================
 
 function addMsg(text, cls) {
-
   const div =
     document.createElement("div");
 
   div.className =
     "msg " + cls;
 
-  // 不使用 innerHTML
-  div.textContent = text;
+  if (cls === "ai") {
+    div.innerHTML = DOMPurify.sanitize(
+      marked.parse(text, {
+        breaks: true,
+        gfm: true
+      })
+    );
+  } else {
+    div.textContent = text;
+  }
 
   chat.appendChild(div);
 
