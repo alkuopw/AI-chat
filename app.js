@@ -1,5 +1,5 @@
 const API_URL =
-  "https://mute-shape-be82.sadnohikori-952.workers.dev/api/chat";
+  "/api/chat";
 
 
 const chat =
