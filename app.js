@@ -140,8 +140,12 @@ form.addEventListener(
         "AI 没有返回内容。";
 
 
-      loading.textContent =
-        reply;
+      loading.innerHTML = DOMPurify.sanitize(
+  marked.parse(reply, {
+    breaks: true,
+    gfm: true
+  })
+);
 
 
       // 保存 AI 回复
